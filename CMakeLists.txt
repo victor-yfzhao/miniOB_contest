@@ -1,3 +1,4 @@
+add_definitions("-Wall -g")
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 20)
 
@@ -24,7 +25,7 @@ OPTION(STATIC_STDLIB "Link std library static or dynamic, such as libgcc, libstd
 OPTION(USE_SIMD "Use SIMD" OFF)
 
 MESSAGE(STATUS "HOME dir: $ENV{HOME}")
-#SET(ENV{变量名} 值)
+#SET(ENV{变量名} 倄1�7)
 IF(WIN32)
     MESSAGE(STATUS "This is windows.")
     ADD_DEFINITIONS(-DWIN32)
