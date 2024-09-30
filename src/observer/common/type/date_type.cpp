@@ -44,13 +44,19 @@ RC DateType::set_value_from_str(Value &val, const string &data) const
 }
 
 
-// RC DateType::cast_to(const Value &val, AttrType type, Value &result) const
-// {
-//   switch (type) {
-//     default: return RC::UNIMPLEMENTED;
-//   }
-//   return RC::SUCCESS;
-// }
+RC DateType::cast_to(const Value &val, AttrType type, Value &result) const
+{
+  switch (type) {
+    case AttrType::DATES: {
+      result = val;
+    } break;
+    case AttrType::CHARS: {
+      return RC::UNIMPLEMENTED;
+    } break;
+    default: return RC::INVALID_ARGUMENT;
+  }
+  return RC::SUCCESS;
+}
 
 // int CharType::cast_cost(AttrType type)
 // {
