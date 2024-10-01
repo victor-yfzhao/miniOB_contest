@@ -5,8 +5,8 @@
 
 int DateType::compare(const Value &left, const Value &right) const
 {
-  ASSERT(left.attr_type() == AttrType::DATES && 
-        (right.attr_type() == AttrType::DATES || right.attr_type() == AttrType::CHARS), "invalid type");
+  ASSERT(!(left.attr_type() == AttrType::DATES && 
+        (right.attr_type() == AttrType::DATES || right.attr_type() == AttrType::CHARS)), "invalid type");
   if(right.attr_type() == AttrType::CHARS) {
     Value tmp;
     RC rc = set_value_from_str(tmp, right.get_string());
