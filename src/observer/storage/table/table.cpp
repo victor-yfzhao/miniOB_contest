@@ -494,11 +494,11 @@ RC Table::update_record(const Record &record)
     return rc;
   }
 
-  rc = insert_entry_of_indexes(record.data(), record.rid());
-  if (rc != RC::SUCCESS) {
-    LOG_ERROR("Failed to insert entry to index. table name=%s, rc=%s", name(), strrc(rc));
-    return rc;
-  }
+  // rc = insert_entry_of_indexes(record.data(), record.rid());
+  // if (rc != RC::SUCCESS) {
+  //   LOG_ERROR("Failed to insert entry to index. table name=%s, rc=%s", name(), strrc(rc));
+  //   return rc;
+  // }
 
   return rc;
 }
