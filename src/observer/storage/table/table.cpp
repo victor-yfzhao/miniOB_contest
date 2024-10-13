@@ -479,14 +479,14 @@ RC Table::delete_record(const Record &record)
 RC Table::update_record(const Record &record)
 {
   RC rc = RC::SUCCESS;
-  for (Index *index : indexes_) {
-    rc = index->delete_entry(record.data(), &record.rid());
-    if (rc != RC::SUCCESS) {
-      LOG_ERROR("Failed to delete entry from index. table name=%s, index name=%s, rid=%s, rc=%s",
-                name(), index->index_meta().name(), record.rid().to_string().c_str(), strrc(rc));
-      return rc;
-    }
-  }
+  // for (Index *index : indexes_) {
+  //   rc = index->delete_entry(record.data(), &record.rid());
+  //   if (rc != RC::SUCCESS) {
+  //     LOG_ERROR("Failed to delete entry from index. table name=%s, index name=%s, rid=%s, rc=%s",
+  //               name(), index->index_meta().name(), record.rid().to_string().c_str(), strrc(rc));
+  //     return rc;
+  //   }
+  // }
 
   rc = record_handler_->update_record(record.rid(), record.data());
   if (rc != RC::SUCCESS) {
