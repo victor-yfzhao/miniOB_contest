@@ -352,7 +352,8 @@ RC RowRecordPageHandler::delete_record(const RID *rid)
 
 RC RowRecordPageHandler::update_record(const RID &rid, const char *data)
 {
-  ASSERT(rw_mode_ != ReadWriteMode::READ_ONLY, "cannot delete record from page while the page is readonly");
+  ASSERT(rw_mode_ != ReadWriteMode::READ_ONLY, 
+         "cannot delete record from page while the page is readonly");
 
   if (rid.slot_num >= page_header_->record_capacity) {
     LOG_ERROR("Invalid slot_num %d, exceed page's record capacity, frame=%s, page_header=%s",
@@ -375,7 +376,7 @@ RC RowRecordPageHandler::update_record(const RID &rid, const char *data)
     if (OB_FAIL(rc)) {
       LOG_ERROR("Failed to update record. page_num %d:%d. rc=%s", 
                 disk_buffer_pool_->file_desc(), frame_->page_num(), strrc(rc));
-      // return rc; // ignore errors
+      return rc;
     }
 
     return RC::SUCCESS;
@@ -668,6 +669,19 @@ RC RecordFileHandler::get_record(const RID &rid, Record &record)
   record.copy_data(inplace_record.data(), inplace_record.len());
   record.set_rid(rid);
   return rc;
+}
+
+RC RecordFileHandler::update_record(const RID &rid, const char *data)
+{
+  unique_ptr<RecordPageHandler> page_handler(RecordPageHandler::create(storage_format_));
+
+  RC rc = page_handler->init(*disk_buffer_pool_, *log_handler_, rid.page_num, ReadWriteMode::READ_WRITE);
+  if (OB_FAIL(rc)) {
+    LOG_ERROR("Failed to init record page handler.page number=%d", rid.page_num);
+    return rc;
+  }
+
+  return page_handler->update_record(rid, data);
 }
 
 RC RecordFileHandler::visit_record(const RID &rid, function<bool(Record &)> updater)

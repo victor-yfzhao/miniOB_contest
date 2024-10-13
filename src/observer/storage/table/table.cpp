@@ -476,6 +476,33 @@ RC Table::delete_record(const Record &record)
   return rc;
 }
 
+RC Table::update_record(const Record &record)
+{
+  RC rc = RC::SUCCESS;
+  for (Index *index : indexes_) {
+    rc = index->delete_entry(record.data(), &record.rid());
+    if (rc != RC::SUCCESS) {
+      LOG_ERROR("Failed to delete entry from index. table name=%s, index name=%s, rid=%s, rc=%s",
+                name(), index->index_meta().name(), record.rid().to_string().c_str(), strrc(rc));
+      return rc;
+    }
+  }
+
+  rc = record_handler_->update_record(record.rid(), record.data());
+  if (rc != RC::SUCCESS) {
+    LOG_ERROR("Failed to update record. table name=%s, rc=%s", name(), strrc(rc));
+    return rc;
+  }
+
+  rc = insert_entry_of_indexes(record.data(), record.rid());
+  if (rc != RC::SUCCESS) {
+    LOG_ERROR("Failed to insert entry to index. table name=%s, rc=%s", name(), strrc(rc));
+    return rc;
+  }
+
+  return rc;
+}
+
 RC Table::insert_entry_of_indexes(const char *record, const RID &rid)
 {
   RC rc = RC::SUCCESS;
