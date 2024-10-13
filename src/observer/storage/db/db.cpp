@@ -29,6 +29,7 @@ See the Mulan PSL v2 for more details. */
 #include "storage/trx/trx.h"
 #include "storage/clog/disk_log_handler.h"
 #include "storage/clog/integrated_log_replayer.h"
+#include "db.h"
 
 using namespace common;
 
@@ -161,6 +162,22 @@ RC Db::create_table(const char *table_name, span<const AttrInfoSqlNode> attribut
   return RC::SUCCESS;
 }
 
+RC Db::drop_table(const char* table_name)
+{
+    Table* table = find_table(table_name);
+    if (table == nullptr)
+    {
+        return RC::SCHEMA_TABLE_NOT_EXIST; // 找不到表，要返回错误，测试程序中也会校验这种场景
+    }
+  
+    RC rc = table->destroy(path_.c_str()); // 让表自己销毁资源
+    if(rc != RC::SUCCESS) return rc;
+
+    rc = erase_table(table_name); // 删除成功的话，从表list中将它删除
+    delete table;
+    return rc;
+}
+
 Table *Db::find_table(const char *table_name) const
 {
   unordered_map<string, Table *>::const_iterator iter = opened_tables_.find(table_name);
@@ -168,6 +185,17 @@ Table *Db::find_table(const char *table_name) const
     return iter->second;
   }
   return nullptr;
+}
+
+RC Db::erase_table(const char *table_name)
+{
+  auto iter = opened_tables_.find(table_name);
+  if (iter != opened_tables_.end()) {
+    delete iter->second;
+    opened_tables_.erase(iter);
+    return RC::SUCCESS;
+  }
+  return RC::SCHEMA_TABLE_NOT_EXIST;
 }
 
 Table *Db::find_table(int32_t table_id) const

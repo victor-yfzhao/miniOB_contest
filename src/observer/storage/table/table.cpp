@@ -476,6 +476,33 @@ RC Table::delete_record(const Record &record)
   return rc;
 }
 
+RC Table::update_record(const Record &record)
+{
+  RC rc = RC::SUCCESS;
+  // for (Index *index : indexes_) {
+  //   rc = index->delete_entry(record.data(), &record.rid());
+  //   if (rc != RC::SUCCESS) {
+  //     LOG_ERROR("Failed to delete entry from index. table name=%s, index name=%s, rid=%s, rc=%s",
+  //               name(), index->index_meta().name(), record.rid().to_string().c_str(), strrc(rc));
+  //     return rc;
+  //   }
+  // }
+
+  rc = record_handler_->update_record(record.rid(), record.data());
+  if (rc != RC::SUCCESS) {
+    LOG_ERROR("Failed to update record. table name=%s, rc=%s", name(), strrc(rc));
+    return rc;
+  }
+
+  // rc = insert_entry_of_indexes(record.data(), record.rid());
+  // if (rc != RC::SUCCESS) {
+  //   LOG_ERROR("Failed to insert entry to index. table name=%s, rc=%s", name(), strrc(rc));
+  //   return rc;
+  // }
+
+  return rc;
+}
+
 RC Table::insert_entry_of_indexes(const char *record, const RID &rid)
 {
   RC rc = RC::SUCCESS;
@@ -521,6 +548,7 @@ Index *Table::find_index_by_field(const char *field_name) const
   return nullptr;
 }
 
+
 RC Table::sync()
 {
   RC rc = RC::SUCCESS;
@@ -539,4 +567,53 @@ RC Table::sync()
   rc = data_buffer_pool_->flush_all_pages();
   LOG_INFO("Sync table over. table=%s", name());
   return rc;
+}
+
+// DropTable
+RC Table::destroy(const char* dir) {
+    RC rc = sync();//刷新所有脏页
+
+    if(rc != RC::SUCCESS) return rc;
+
+    std::string path = table_meta_file(dir, name());
+    if(unlink(path.c_str()) != 0) {
+        LOG_ERROR("Failed to remove meta file=%s, errno=%d", path.c_str(), errno);
+        return RC::IOERR_ACCESS;
+    }
+
+    std::string data_file = table_data_file(dir, name());
+    if(unlink(data_file.c_str()) != 0) { // 删除描述表元数据的文件
+        LOG_ERROR("Failed to remove data file=%s, errno=%d", data_file.c_str(), errno);
+        return RC::IOERR_ACCESS;
+    }
+    // 销毁 record_handler_
+    if (record_handler_ != nullptr) {
+        delete record_handler_;
+        record_handler_ = nullptr;
+    }
+
+    // 销毁 data_buffer_pool_
+    if (data_buffer_pool_ != nullptr) {
+        data_buffer_pool_->close_file();
+        delete data_buffer_pool_;
+        data_buffer_pool_ = nullptr;
+    }
+
+    // std::string text_data_file = std::string(dir) + "/" + name() + TABLE_TEXT_DATA_SUFFIX;
+    // if(unlink(text_data_file.c_str()) != 0) { // 删除表实现text字段的数据文件（后续实现了text case时需要考虑，最开始可以不考虑这个逻辑）
+    //     LOG_ERROR("Failed to remove text data file=%s, errno=%d", text_data_file.c_str(), errno);
+    //     return RC::IOERR_ACCESS;
+    // }
+
+    const int index_num = table_meta_.index_num();
+    for (int i = 0; i < index_num; i++) {  // 清理所有的索引相关文件数据与索引元数据
+        ((BplusTreeIndex*)indexes_[i])->close();
+        const IndexMeta* index_meta = table_meta_.index(i);
+        std::string index_file = table_index_file(dir, name() , index_meta->name());
+        if(unlink(index_file.c_str()) != 0) {
+            LOG_ERROR("Failed to remove index file=%s, errno=%d", index_file.c_str(), errno);
+            return RC::IOERR_ACCESS;
+        }
+    }
+    return RC::SUCCESS;
 }
