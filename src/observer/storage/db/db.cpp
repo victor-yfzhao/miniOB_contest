@@ -173,9 +173,9 @@ RC Db::drop_table(const char* table_name)
 
     RC rc = table->destroy(table_name); // 让表自己销毁资源
     if(rc != RC::SUCCESS) return rc;
+    
     opened_tables_.erase(it);// 删除成功的话，从表list中将它删除 
-    //delete table;
-    //table = nullptr; 
+    //delete table; 
     return RC::SUCCESS;
 }
 
