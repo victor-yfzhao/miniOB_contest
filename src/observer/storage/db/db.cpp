@@ -175,7 +175,7 @@ RC Db::drop_table(const char* table_name)
     if(rc != RC::SUCCESS) return rc;
     
     opened_tables_.erase(it);// 删除成功的话，从表list中将它删除 
-    //delete table; 
+    delete table; 
     return RC::SUCCESS;
 }
 
