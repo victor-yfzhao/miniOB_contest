@@ -411,7 +411,7 @@ src/observer/CMakeFiles/observer.dir/all: deps/common/CMakeFiles/common.dir/all
 src/observer/CMakeFiles/observer.dir/all: src/observer/CMakeFiles/observer_static.dir/all
 	$(MAKE) $(MAKESILENT) -f src/observer/CMakeFiles/observer.dir/build.make src/observer/CMakeFiles/observer.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/observer/CMakeFiles/observer.dir/build.make src/observer/CMakeFiles/observer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num=39 "Built target observer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num= "Built target observer"
 .PHONY : src/observer/CMakeFiles/observer.dir/all
 
 # Build rule for subdir invocation for target.
@@ -437,12 +437,12 @@ src/observer/CMakeFiles/observer.dir/clean:
 src/observer/CMakeFiles/observer_static.dir/all: deps/common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f src/observer/CMakeFiles/observer_static.dir/build.make src/observer/CMakeFiles/observer_static.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/observer/CMakeFiles/observer_static.dir/build.make src/observer/CMakeFiles/observer_static.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num=40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92 "Built target observer_static"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num=39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92 "Built target observer_static"
 .PHONY : src/observer/CMakeFiles/observer_static.dir/all
 
 # Build rule for subdir invocation for target.
 src/observer/CMakeFiles/observer_static.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 68
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/observer/CMakeFiles/observer_static.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : src/observer/CMakeFiles/observer_static.dir/rule
@@ -469,7 +469,7 @@ test/perf/CMakeFiles/client_performance_test.dir/all: src/observer/CMakeFiles/ob
 
 # Build rule for subdir invocation for target.
 test/perf/CMakeFiles/client_performance_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/perf/CMakeFiles/client_performance_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : test/perf/CMakeFiles/client_performance_test.dir/rule
@@ -496,7 +496,7 @@ tools/CMakeFiles/clog_dump.dir/all: src/observer/CMakeFiles/observer_static.dir/
 
 # Build rule for subdir invocation for target.
 tools/CMakeFiles/clog_dump.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 68
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/CMakeFiles/clog_dump.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : tools/CMakeFiles/clog_dump.dir/rule
@@ -543,12 +543,12 @@ unittest/common/CMakeFiles/bitmap_test.dir/clean:
 unittest/common/CMakeFiles/integer_generator_test.dir/all: deps/common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f unittest/common/CMakeFiles/integer_generator_test.dir/build.make unittest/common/CMakeFiles/integer_generator_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f unittest/common/CMakeFiles/integer_generator_test.dir/build.make unittest/common/CMakeFiles/integer_generator_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num=28 "Built target integer_generator_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num= "Built target integer_generator_test"
 .PHONY : unittest/common/CMakeFiles/integer_generator_test.dir/all
 
 # Build rule for subdir invocation for target.
 unittest/common/CMakeFiles/integer_generator_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/common/CMakeFiles/integer_generator_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/common/CMakeFiles/integer_generator_test.dir/rule
@@ -595,12 +595,12 @@ unittest/common/CMakeFiles/log_test.dir/clean:
 unittest/common/CMakeFiles/lower_bound_test.dir/all: deps/common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f unittest/common/CMakeFiles/lower_bound_test.dir/build.make unittest/common/CMakeFiles/lower_bound_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f unittest/common/CMakeFiles/lower_bound_test.dir/build.make unittest/common/CMakeFiles/lower_bound_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num=32 "Built target lower_bound_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num= "Built target lower_bound_test"
 .PHONY : unittest/common/CMakeFiles/lower_bound_test.dir/all
 
 # Build rule for subdir invocation for target.
 unittest/common/CMakeFiles/lower_bound_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/common/CMakeFiles/lower_bound_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/common/CMakeFiles/lower_bound_test.dir/rule
@@ -621,7 +621,7 @@ unittest/common/CMakeFiles/lower_bound_test.dir/clean:
 unittest/common/CMakeFiles/md5_test.dir/all: deps/common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f unittest/common/CMakeFiles/md5_test.dir/build.make unittest/common/CMakeFiles/md5_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f unittest/common/CMakeFiles/md5_test.dir/build.make unittest/common/CMakeFiles/md5_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num=33 "Built target md5_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num=32 "Built target md5_test"
 .PHONY : unittest/common/CMakeFiles/md5_test.dir/all
 
 # Build rule for subdir invocation for target.
@@ -647,12 +647,12 @@ unittest/common/CMakeFiles/md5_test.dir/clean:
 unittest/common/CMakeFiles/mem_pool_test.dir/all: deps/common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f unittest/common/CMakeFiles/mem_pool_test.dir/build.make unittest/common/CMakeFiles/mem_pool_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f unittest/common/CMakeFiles/mem_pool_test.dir/build.make unittest/common/CMakeFiles/mem_pool_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num= "Built target mem_pool_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num=33 "Built target mem_pool_test"
 .PHONY : unittest/common/CMakeFiles/mem_pool_test.dir/all
 
 # Build rule for subdir invocation for target.
 unittest/common/CMakeFiles/mem_pool_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 16
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/common/CMakeFiles/mem_pool_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/common/CMakeFiles/mem_pool_test.dir/rule
@@ -809,7 +809,7 @@ unittest/observer/CMakeFiles/aggregate_hash_table_test.dir/all: src/observer/CMa
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/aggregate_hash_table_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 68
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/aggregate_hash_table_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/aggregate_hash_table_test.dir/rule
@@ -836,7 +836,7 @@ unittest/observer/CMakeFiles/arithmetic_operator_test.dir/all: src/observer/CMak
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/arithmetic_operator_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/arithmetic_operator_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/arithmetic_operator_test.dir/rule
@@ -863,7 +863,7 @@ unittest/observer/CMakeFiles/bp_manager_test.dir/all: src/observer/CMakeFiles/ob
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/bp_manager_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/bp_manager_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/bp_manager_test.dir/rule
@@ -890,7 +890,7 @@ unittest/observer/CMakeFiles/bplus_tree_log_entry_test.dir/all: src/observer/CMa
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/bplus_tree_log_entry_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/bplus_tree_log_entry_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/bplus_tree_log_entry_test.dir/rule
@@ -917,7 +917,7 @@ unittest/observer/CMakeFiles/bplus_tree_log_test.dir/all: src/observer/CMakeFile
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/bplus_tree_log_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 68
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/bplus_tree_log_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/bplus_tree_log_test.dir/rule
@@ -944,7 +944,7 @@ unittest/observer/CMakeFiles/bplus_tree_test.dir/all: src/observer/CMakeFiles/ob
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/bplus_tree_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/bplus_tree_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/bplus_tree_test.dir/rule
@@ -971,7 +971,7 @@ unittest/observer/CMakeFiles/buffer_pool_log_test.dir/all: src/observer/CMakeFil
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/buffer_pool_log_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/buffer_pool_log_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/buffer_pool_log_test.dir/rule
@@ -998,7 +998,7 @@ unittest/observer/CMakeFiles/chunk_test.dir/all: src/observer/CMakeFiles/observe
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/chunk_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/chunk_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/chunk_test.dir/rule
@@ -1020,7 +1020,7 @@ unittest/observer/CMakeFiles/composite_tuple_test.dir/all: deps/common/CMakeFile
 unittest/observer/CMakeFiles/composite_tuple_test.dir/all: src/observer/CMakeFiles/observer_static.dir/all
 	$(MAKE) $(MAKESILENT) -f unittest/observer/CMakeFiles/composite_tuple_test.dir/build.make unittest/observer/CMakeFiles/composite_tuple_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f unittest/observer/CMakeFiles/composite_tuple_test.dir/build.make unittest/observer/CMakeFiles/composite_tuple_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num=24 "Built target composite_tuple_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num= "Built target composite_tuple_test"
 .PHONY : unittest/observer/CMakeFiles/composite_tuple_test.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1047,12 +1047,12 @@ unittest/observer/CMakeFiles/disk_buffer_pool_test.dir/all: deps/common/CMakeFil
 unittest/observer/CMakeFiles/disk_buffer_pool_test.dir/all: src/observer/CMakeFiles/observer_static.dir/all
 	$(MAKE) $(MAKESILENT) -f unittest/observer/CMakeFiles/disk_buffer_pool_test.dir/build.make unittest/observer/CMakeFiles/disk_buffer_pool_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f unittest/observer/CMakeFiles/disk_buffer_pool_test.dir/build.make unittest/observer/CMakeFiles/disk_buffer_pool_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num= "Built target disk_buffer_pool_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num=24 "Built target disk_buffer_pool_test"
 .PHONY : unittest/observer/CMakeFiles/disk_buffer_pool_test.dir/all
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/disk_buffer_pool_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 68
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/disk_buffer_pool_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/disk_buffer_pool_test.dir/rule
@@ -1079,7 +1079,7 @@ unittest/observer/CMakeFiles/disk_log_handler_test.dir/all: src/observer/CMakeFi
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/disk_log_handler_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/disk_log_handler_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/disk_log_handler_test.dir/rule
@@ -1106,7 +1106,7 @@ unittest/observer/CMakeFiles/double_write_buffer_test.dir/all: src/observer/CMak
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/double_write_buffer_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/double_write_buffer_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/double_write_buffer_test.dir/rule
@@ -1133,7 +1133,7 @@ unittest/observer/CMakeFiles/expression_test.dir/all: src/observer/CMakeFiles/ob
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/expression_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/expression_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/expression_test.dir/rule
@@ -1155,12 +1155,12 @@ unittest/observer/CMakeFiles/log_buffer_test.dir/all: deps/common/CMakeFiles/com
 unittest/observer/CMakeFiles/log_buffer_test.dir/all: src/observer/CMakeFiles/observer_static.dir/all
 	$(MAKE) $(MAKESILENT) -f unittest/observer/CMakeFiles/log_buffer_test.dir/build.make unittest/observer/CMakeFiles/log_buffer_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f unittest/observer/CMakeFiles/log_buffer_test.dir/build.make unittest/observer/CMakeFiles/log_buffer_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num= "Built target log_buffer_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/miniob/CMakeFiles --progress-num=28 "Built target log_buffer_test"
 .PHONY : unittest/observer/CMakeFiles/log_buffer_test.dir/all
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/log_buffer_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 68
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/log_buffer_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/log_buffer_test.dir/rule
@@ -1187,7 +1187,7 @@ unittest/observer/CMakeFiles/log_entry_test.dir/all: src/observer/CMakeFiles/obs
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/log_entry_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/log_entry_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/log_entry_test.dir/rule
@@ -1214,7 +1214,7 @@ unittest/observer/CMakeFiles/log_file_test.dir/all: src/observer/CMakeFiles/obse
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/log_file_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/log_file_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/log_file_test.dir/rule
@@ -1241,7 +1241,7 @@ unittest/observer/CMakeFiles/mvcc_trx_log_test.dir/all: src/observer/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/mvcc_trx_log_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/mvcc_trx_log_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/mvcc_trx_log_test.dir/rule
@@ -1268,7 +1268,7 @@ unittest/observer/CMakeFiles/parser_test.dir/all: src/observer/CMakeFiles/observ
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/parser_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/parser_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/parser_test.dir/rule
@@ -1295,7 +1295,7 @@ unittest/observer/CMakeFiles/pax_storage_test.dir/all: src/observer/CMakeFiles/o
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/pax_storage_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/pax_storage_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/pax_storage_test.dir/rule
@@ -1322,7 +1322,7 @@ unittest/observer/CMakeFiles/persist_test.dir/all: src/observer/CMakeFiles/obser
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/persist_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/persist_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/persist_test.dir/rule
@@ -1349,7 +1349,7 @@ unittest/observer/CMakeFiles/record_manager_test.dir/all: src/observer/CMakeFile
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/record_manager_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/record_manager_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/record_manager_test.dir/rule
@@ -1376,7 +1376,7 @@ unittest/observer/CMakeFiles/ring_buffer_test.dir/all: src/observer/CMakeFiles/o
 
 # Build rule for subdir invocation for target.
 unittest/observer/CMakeFiles/ring_buffer_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 69
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 70
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unittest/observer/CMakeFiles/ring_buffer_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/miniob/CMakeFiles 0
 .PHONY : unittest/observer/CMakeFiles/ring_buffer_test.dir/rule

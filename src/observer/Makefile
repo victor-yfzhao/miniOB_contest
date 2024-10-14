@@ -1831,6 +1831,54 @@ sql/operator/table_scan_vec_physical_operator.cpp.s:
 	cd /root/miniob && $(MAKE) $(MAKESILENT) -f src/observer/CMakeFiles/observer_static.dir/build.make src/observer/CMakeFiles/observer_static.dir/sql/operator/table_scan_vec_physical_operator.cpp.s
 .PHONY : sql/operator/table_scan_vec_physical_operator.cpp.s
 
+sql/operator/update_logical_operator.o: sql/operator/update_logical_operator.cpp.o
+.PHONY : sql/operator/update_logical_operator.o
+
+# target to build an object file
+sql/operator/update_logical_operator.cpp.o:
+	cd /root/miniob && $(MAKE) $(MAKESILENT) -f src/observer/CMakeFiles/observer_static.dir/build.make src/observer/CMakeFiles/observer_static.dir/sql/operator/update_logical_operator.cpp.o
+.PHONY : sql/operator/update_logical_operator.cpp.o
+
+sql/operator/update_logical_operator.i: sql/operator/update_logical_operator.cpp.i
+.PHONY : sql/operator/update_logical_operator.i
+
+# target to preprocess a source file
+sql/operator/update_logical_operator.cpp.i:
+	cd /root/miniob && $(MAKE) $(MAKESILENT) -f src/observer/CMakeFiles/observer_static.dir/build.make src/observer/CMakeFiles/observer_static.dir/sql/operator/update_logical_operator.cpp.i
+.PHONY : sql/operator/update_logical_operator.cpp.i
+
+sql/operator/update_logical_operator.s: sql/operator/update_logical_operator.cpp.s
+.PHONY : sql/operator/update_logical_operator.s
+
+# target to generate assembly for a file
+sql/operator/update_logical_operator.cpp.s:
+	cd /root/miniob && $(MAKE) $(MAKESILENT) -f src/observer/CMakeFiles/observer_static.dir/build.make src/observer/CMakeFiles/observer_static.dir/sql/operator/update_logical_operator.cpp.s
+.PHONY : sql/operator/update_logical_operator.cpp.s
+
+sql/operator/update_physical_operator.o: sql/operator/update_physical_operator.cpp.o
+.PHONY : sql/operator/update_physical_operator.o
+
+# target to build an object file
+sql/operator/update_physical_operator.cpp.o:
+	cd /root/miniob && $(MAKE) $(MAKESILENT) -f src/observer/CMakeFiles/observer_static.dir/build.make src/observer/CMakeFiles/observer_static.dir/sql/operator/update_physical_operator.cpp.o
+.PHONY : sql/operator/update_physical_operator.cpp.o
+
+sql/operator/update_physical_operator.i: sql/operator/update_physical_operator.cpp.i
+.PHONY : sql/operator/update_physical_operator.i
+
+# target to preprocess a source file
+sql/operator/update_physical_operator.cpp.i:
+	cd /root/miniob && $(MAKE) $(MAKESILENT) -f src/observer/CMakeFiles/observer_static.dir/build.make src/observer/CMakeFiles/observer_static.dir/sql/operator/update_physical_operator.cpp.i
+.PHONY : sql/operator/update_physical_operator.cpp.i
+
+sql/operator/update_physical_operator.s: sql/operator/update_physical_operator.cpp.s
+.PHONY : sql/operator/update_physical_operator.s
+
+# target to generate assembly for a file
+sql/operator/update_physical_operator.cpp.s:
+	cd /root/miniob && $(MAKE) $(MAKESILENT) -f src/observer/CMakeFiles/observer_static.dir/build.make src/observer/CMakeFiles/observer_static.dir/sql/operator/update_physical_operator.cpp.s
+.PHONY : sql/operator/update_physical_operator.cpp.s
+
 sql/optimizer/comparison_simplification_rule.o: sql/optimizer/comparison_simplification_rule.cpp.o
 .PHONY : sql/optimizer/comparison_simplification_rule.o
 
@@ -3562,6 +3610,12 @@ help:
 	@echo "... sql/operator/table_scan_vec_physical_operator.o"
 	@echo "... sql/operator/table_scan_vec_physical_operator.i"
 	@echo "... sql/operator/table_scan_vec_physical_operator.s"
+	@echo "... sql/operator/update_logical_operator.o"
+	@echo "... sql/operator/update_logical_operator.i"
+	@echo "... sql/operator/update_logical_operator.s"
+	@echo "... sql/operator/update_physical_operator.o"
+	@echo "... sql/operator/update_physical_operator.i"
+	@echo "... sql/operator/update_physical_operator.s"
 	@echo "... sql/optimizer/comparison_simplification_rule.o"
 	@echo "... sql/optimizer/comparison_simplification_rule.i"
 	@echo "... sql/optimizer/comparison_simplification_rule.s"
