@@ -58,7 +58,7 @@ public:
    * 清除一个表中的数据
    * @param dir 表所在的文件夹
    */
-  RC destroy(const char* dir);
+  RC destroy(const char * table_name);
 
   /**
    * 打开一个表

@@ -5,8 +5,19 @@ TOPDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 BUILD_SH=$TOPDIR/build.sh
 
-CMAKE_COMMAND="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 --log-level=STATUS"
+# 启用 ccache
+export CC="ccache gcc"
+export CXX="ccache g++"
 
+# 配置 CMake
+CMAKE_COMMAND="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 --log-level=STATUS"
+BUILD_COMMAND="make -j8"
+
+# 执行 CMAKE_COMMAND
+$CMAKE_COMMAND
+
+# 执行 BUILD_COMMAND
+$BUILD_COMMAND
 ALL_ARGS=("$@")
 BUILD_ARGS=()
 MAKE_ARGS=()
