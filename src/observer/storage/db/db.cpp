@@ -165,7 +165,7 @@ RC Db::create_table(const char *table_name, span<const AttrInfoSqlNode> attribut
 RC Db::drop_table(const char* table_name)
 {
     auto it = opened_tables_.find(table_name);
-    if (it == nullptr)
+    if (it == opened_tables_.end())
     {
         return RC::SCHEMA_TABLE_NOT_EXIST; // 找不到表，要返回错误，测试程序中也会校验这种场景
     }
