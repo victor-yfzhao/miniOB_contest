@@ -48,7 +48,7 @@ RC DefaultConditionFilter::init(const ConDesc &left, const ConDesc &right, AttrT
     return RC::INVALID_ARGUMENT;
   }
 
-  if (comp_op == LIKE && attr_type != AttrType::CHARS) {
+  if ((comp_op == LIKE || comp_op == NOT_LIKE) && attr_type != AttrType::CHARS) {
     LOG_ERROR("Invalid condition with unsupported compare operation: %d", comp_op);
     return RC::INVALID_ARGUMENT;
   }
@@ -143,6 +143,10 @@ bool DefaultConditionFilter::filter(const Record &rec) const
 
   if(comp_op_ == LIKE) {
     return left_value.like(right_value);
+  }
+
+  if(comp_op_ == NOT_LIKE) {
+    return !left_value.like(right_value);
   }
 
   int cmp_result = left_value.compare(right_value);

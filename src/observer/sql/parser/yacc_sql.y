@@ -98,6 +98,7 @@ UnboundAggregateExpr *create_aggregate_expression(const char *aggregate_name,
         FROM
         WHERE
         AND
+        NOT // ADD NOT
         LIKE_SQL // ADD LIKE
         SET
         ON
@@ -659,6 +660,18 @@ condition:
 
       delete $1;
       delete $3;
+    }
+    | rel_attr NOT LIKE_SQL value
+    {
+      $$ = new ConditionSqlNode;
+      $$->left_is_attr = 1;
+      $$->left_attr = *$1;
+      $$->right_is_attr = 0;
+      $$->right_value = *$4;
+      $$->comp = NOT_LIKE;
+
+      delete $1;
+      delete $4;
     }
     ;
 
