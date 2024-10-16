@@ -587,15 +587,6 @@ RC Table::destroy(const char* table_name) {
         return RC::IOERR_ACCESS;
     }
 
-    string data_file = table_data_file(base_dir_.c_str(), table_name);
-    BufferPoolManager &bpm = db_->buffer_pool_manager();
-    bpm.close_file(data_file.c_str());
-
-    // 销毁 record_handler_
-    if (record_handler_ != nullptr) {
-        delete record_handler_;
-        record_handler_ = nullptr;
-    }
 
     const int index_num = table_meta_.index_num();
     for (int i = 0; i < index_num; i++) {  // 清理所有的索引相关文件数据与索引元数据
