@@ -176,13 +176,14 @@ struct DropTableSqlNode
  * @ingroup SQLParser
  * @details 创建索引时，需要指定索引名，表名，字段名。
  * 正常的SQL语句中，一个索引可能包含了多个字段，这里仅支持一个字段。
+ * update: multi-indexes are supported now
  */
 struct CreateIndexSqlNode
 {
-  std::string index_name;      ///< Index name
-  std::string relation_name;   ///< Relation name
-  std::string attribute_name;  ///< Attribute name
-  bool        unique = false;  ///< 是否唯一
+  std::string              index_name;      ///< Index name
+  std::string              relation_name;   ///< Relation name
+  std::vector<std::string> attribute_name;  ///< Attribute name
+  bool                     unique = false;  ///< 是否唯一
 };
 
 /**

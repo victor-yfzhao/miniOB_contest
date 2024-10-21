@@ -27,9 +27,9 @@ RC CreateIndexStmt::create(Db *db, const CreateIndexSqlNode &create_index, Stmt 
 
   const char *table_name = create_index.relation_name.c_str();
   if (is_blank(table_name) || is_blank(create_index.index_name.c_str()) ||
-      is_blank(create_index.attribute_name.c_str())) {
-    LOG_WARN("invalid argument. db=%p, table_name=%p, index name=%s, attribute name=%s",
-        db, table_name, create_index.index_name.c_str(), create_index.attribute_name.c_str());
+      create_index.attribute_name.empty()) {
+    LOG_WARN("invalid argument. db=%p, table_name=%p, index name=%s, attribute isEmpty() = %s",
+        db, table_name, create_index.index_name.c_str(), create_index.attribute_name.empty());
     return RC::INVALID_ARGUMENT;
   }
 
@@ -40,12 +40,23 @@ RC CreateIndexStmt::create(Db *db, const CreateIndexSqlNode &create_index, Stmt 
     return RC::SCHEMA_TABLE_NOT_EXIST;
   }
 
-  const FieldMeta *field_meta = table->table_meta().field(create_index.attribute_name.c_str());
-  if (nullptr == field_meta) {
-    LOG_WARN("no such field in table. db=%s, table=%s, field name=%s", 
-             db->name(), table_name, create_index.attribute_name.c_str());
-    return RC::SCHEMA_FIELD_NOT_EXIST;
+  vector<FieldMeta> field_metas;
+  for(size_t i = 0; i < create_index.attribute_name.size(); i++) {
+    const FieldMeta *field_meta = table->table_meta().field(create_index.attribute_name[i].c_str());
+    if (nullptr == field_meta) {
+      LOG_WARN("no such field in table. db=%s, table=%s, field name=%s",
+          db->name(), table_name, create_index.attribute_name[i].c_str());
+      return RC::SCHEMA_FIELD_NOT_EXIST;
+    }
+    field_metas.push_back(*field_meta);
   }
+
+  // const FieldMeta *field_meta = table->table_meta().field(create_index.attribute_name.c_str());
+  // if (nullptr == field_meta) {
+  //   LOG_WARN("no such field in table. db=%s, table=%s, field name=%s", 
+  //            db->name(), table_name, create_index.attribute_name.c_str());
+  //   return RC::SCHEMA_FIELD_NOT_EXIST;
+  // }
 
   Index *index = table->find_index(create_index.index_name.c_str());
   if (nullptr != index) {
@@ -53,6 +64,13 @@ RC CreateIndexStmt::create(Db *db, const CreateIndexSqlNode &create_index, Stmt 
     return RC::SCHEMA_INDEX_NAME_REPEAT;
   }
 
-  stmt = new CreateIndexStmt(table, field_meta, create_index.index_name, create_index.unique);
+  CreateIndexStmt *create_index_stmt = new CreateIndexStmt();
+
+  create_index_stmt->table_ = table;
+  create_index_stmt->field_metas_.swap(field_metas);
+  create_index_stmt->index_name_ = create_index.index_name;
+  create_index_stmt->unique_ = create_index.unique;
+  stmt                       = create_index_stmt;
+
   return RC::SUCCESS;
 }
