@@ -90,7 +90,7 @@ RC DateType::to_string(const Value &val, string &result) const
     int month = (date / 100) % 100;
     int day = date % 100;
 
-    char buffer[11];
+    char buffer[20];
     snprintf(buffer, sizeof(buffer), "%04d-%02d-%02d", year, month, day);
     result = buffer;
 

@@ -26,7 +26,7 @@ UpdateStmt::UpdateStmt(Table *table, const Value *values, int value_amount, Filt
 RC UpdateStmt::create(Db *db, const UpdateSqlNode &update, Stmt *&stmt)
 {
   const char *table_name = update.relation_name.c_str();
-  if (nullptr == db || nullptr == table_name || nullptr == &update.value) {
+  if (nullptr == db || nullptr == table_name) {
     LOG_WARN("invalid argument. db=%p, table_name=%p, value=%s",
         db, table_name, update.value);
     return RC::INVALID_ARGUMENT;

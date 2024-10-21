@@ -353,7 +353,7 @@ RC Table::get_chunk_scanner(ChunkFileScanner &scanner, Trx *trx, ReadWriteMode m
   return rc;
 }
 
-RC Table::create_index(Trx *trx, const FieldMeta *field_meta, const char *index_name)
+RC Table::create_index(Trx *trx, const FieldMeta *field_meta, const char *index_name, bool unique)
 {
   if (common::is_blank(index_name) || nullptr == field_meta) {
     LOG_INFO("Invalid input arguments, table name is %s, index_name is blank or attribute_name is blank", name());
@@ -362,7 +362,7 @@ RC Table::create_index(Trx *trx, const FieldMeta *field_meta, const char *index_
 
   IndexMeta new_index_meta;
 
-  RC rc = new_index_meta.init(index_name, *field_meta);
+  RC rc = new_index_meta.init(index_name, *field_meta, unique);
   if (rc != RC::SUCCESS) {
     LOG_INFO("Failed to init IndexMeta in table:%s, index_name:%s, field_name:%s", 
              name(), index_name, field_meta->name());
@@ -570,46 +570,29 @@ RC Table::sync()
 }
 
 // DropTable
-RC Table::destroy(const char* dir) {
+RC Table::destroy(const char* table_name) {
     RC rc = sync();//刷新所有脏页
 
     if(rc != RC::SUCCESS) return rc;
 
-    std::string path = table_meta_file(dir, name());
+    std::string path = table_meta_file(base_dir_.c_str(), table_name);
     if(unlink(path.c_str()) != 0) {
         LOG_ERROR("Failed to remove meta file=%s, errno=%d", path.c_str(), errno);
         return RC::IOERR_ACCESS;
     }
 
-    std::string data_file = table_data_file(dir, name());
-    if(unlink(data_file.c_str()) != 0) { // 删除描述表元数据的文件
-        LOG_ERROR("Failed to remove data file=%s, errno=%d", data_file.c_str(), errno);
+    std::string data_path = table_data_file(base_dir_.c_str(), table_name);
+    if(unlink(data_path.c_str()) != 0) {
+        LOG_ERROR("Failed to remove data file=%s, errno=%d", data_path.c_str(), errno);
         return RC::IOERR_ACCESS;
     }
-    // 销毁 record_handler_
-    if (record_handler_ != nullptr) {
-        delete record_handler_;
-        record_handler_ = nullptr;
-    }
 
-    // 销毁 data_buffer_pool_
-    if (data_buffer_pool_ != nullptr) {
-        data_buffer_pool_->close_file();
-        delete data_buffer_pool_;
-        data_buffer_pool_ = nullptr;
-    }
-
-    // std::string text_data_file = std::string(dir) + "/" + name() + TABLE_TEXT_DATA_SUFFIX;
-    // if(unlink(text_data_file.c_str()) != 0) { // 删除表实现text字段的数据文件（后续实现了text case时需要考虑，最开始可以不考虑这个逻辑）
-    //     LOG_ERROR("Failed to remove text data file=%s, errno=%d", text_data_file.c_str(), errno);
-    //     return RC::IOERR_ACCESS;
-    // }
 
     const int index_num = table_meta_.index_num();
     for (int i = 0; i < index_num; i++) {  // 清理所有的索引相关文件数据与索引元数据
         ((BplusTreeIndex*)indexes_[i])->close();
         const IndexMeta* index_meta = table_meta_.index(i);
-        std::string index_file = table_index_file(dir, name() , index_meta->name());
+        std::string index_file = table_index_file(base_dir_.c_str(), table_name , index_meta->name());
         if(unlink(index_file.c_str()) != 0) {
             LOG_ERROR("Failed to remove index file=%s, errno=%d", index_file.c_str(), errno);
             return RC::IOERR_ACCESS;

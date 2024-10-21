@@ -119,7 +119,7 @@ private:
 private:
   string                         name_;                 ///< 数据库名称
   string                         path_;                 ///< 数据库文件存放的目录
-  unordered_map<string, Table *> opened_tables_;        ///< 当前所有打开的表
+  unordered_map<string, Table *>opened_tables_;        ///< 当前所有打开的表
   unique_ptr<BufferPoolManager>  buffer_pool_manager_;  ///< 当前数据库的buffer pool管理器
   unique_ptr<LogHandler>         log_handler_;          ///< 当前数据库的日志处理器
   unique_ptr<TrxKit>             trx_kit_;              ///< 当前数据库的事务管理器

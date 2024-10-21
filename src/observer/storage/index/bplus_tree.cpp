@@ -799,6 +799,7 @@ RC BplusTreeHandler::create(LogHandler &log_handler,
                             const char *file_name, 
                             AttrType attr_type, 
                             int attr_length, 
+                            bool unique /* = false */,
                             int internal_max_size /* = -1*/,
                             int leaf_max_size /* = -1 */)
 {
@@ -818,7 +819,7 @@ RC BplusTreeHandler::create(LogHandler &log_handler,
   }
   LOG_INFO("Successfully open index file %s.", file_name);
 
-  rc = this->create(log_handler, *bp, attr_type, attr_length, internal_max_size, leaf_max_size);
+  rc = this->create(log_handler, *bp, attr_type, attr_length, internal_max_size, leaf_max_size, unique);
   if (OB_FAIL(rc)) {
     bpm.close_file(file_name);
     return rc;
@@ -833,7 +834,8 @@ RC BplusTreeHandler::create(LogHandler &log_handler,
             AttrType attr_type,
             int attr_length,
             int internal_max_size /* = -1 */,
-            int leaf_max_size /* = -1 */)
+            int leaf_max_size /* = -1 */,
+            bool unique /* = false */)
 {
   if (internal_max_size < 0) {
     internal_max_size = calc_internal_page_capacity(attr_length);
@@ -871,6 +873,7 @@ RC BplusTreeHandler::create(LogHandler &log_handler,
   file_header->internal_max_size = internal_max_size;
   file_header->leaf_max_size     = leaf_max_size;
   file_header->root_page         = BP_INVALID_PAGE_NUM;
+  file_header->unique            = unique;
 
   // 取消记录日志的原因请参考下面的sync调用的地方。
   // mtr.logger().init_header_page(header_frame, *file_header);
@@ -887,7 +890,7 @@ RC BplusTreeHandler::create(LogHandler &log_handler,
     return RC::NOMEM;
   }
 
-  key_comparator_.init(file_header->attr_type, file_header->attr_length);
+  key_comparator_.init(file_header->attr_type, file_header->attr_length, file_header->unique);
   key_printer_.init(file_header->attr_type, file_header->attr_length);
 
   /*
@@ -959,7 +962,7 @@ RC BplusTreeHandler::open(LogHandler &log_handler, DiskBufferPool &buffer_pool)
   // close old page_handle
   buffer_pool.unpin_page(frame);
 
-  key_comparator_.init(file_header_.attr_type, file_header_.attr_length);
+  key_comparator_.init(file_header_.attr_type, file_header_.attr_length, file_header_.unique);
   key_printer_.init(file_header_.attr_type, file_header_.attr_length);
   LOG_INFO("Successfully open index");
   return RC::SUCCESS;
@@ -1438,7 +1441,7 @@ RC BplusTreeHandler::recover_init_header_page(BplusTreeMiniTransaction &mtr, Fra
   header_dirty_ = false;
   frame->mark_dirty();
 
-  key_comparator_.init(file_header_.attr_type, file_header_.attr_length);
+  key_comparator_.init(file_header_.attr_type, file_header_.attr_length, file_header_.unique);
   key_printer_.init(file_header_.attr_type, file_header_.attr_length);
 
   return RC::SUCCESS;

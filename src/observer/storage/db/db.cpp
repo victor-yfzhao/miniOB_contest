@@ -164,18 +164,19 @@ RC Db::create_table(const char *table_name, span<const AttrInfoSqlNode> attribut
 
 RC Db::drop_table(const char* table_name)
 {
-    Table* table = find_table(table_name);
-    if (table == nullptr)
+    auto it = opened_tables_.find(table_name);
+    if (it == opened_tables_.end())
     {
         return RC::SCHEMA_TABLE_NOT_EXIST; // 找不到表，要返回错误，测试程序中也会校验这种场景
     }
-  
-    RC rc = table->destroy(path_.c_str()); // 让表自己销毁资源
-    if(rc != RC::SUCCESS) return rc;
+    Table* table = it->second;
 
-    rc = erase_table(table_name); // 删除成功的话，从表list中将它删除
-    delete table;
-    return rc;
+    RC rc = table->destroy(table_name); // 让表自己销毁资源
+    if(rc != RC::SUCCESS) return rc;
+    
+    opened_tables_.erase(it);// 删除成功的话，从表list中将它删除 
+    delete table; 
+    return RC::SUCCESS;
 }
 
 Table *Db::find_table(const char *table_name) const
@@ -187,16 +188,6 @@ Table *Db::find_table(const char *table_name) const
   return nullptr;
 }
 
-RC Db::erase_table(const char *table_name)
-{
-  auto iter = opened_tables_.find(table_name);
-  if (iter != opened_tables_.end()) {
-    delete iter->second;
-    opened_tables_.erase(iter);
-    return RC::SUCCESS;
-  }
-  return RC::SCHEMA_TABLE_NOT_EXIST;
-}
 
 Table *Db::find_table(int32_t table_id) const
 {

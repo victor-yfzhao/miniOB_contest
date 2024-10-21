@@ -47,6 +47,8 @@ public:
    */
   virtual int compare(const Value &left, const Value &right) const { return INT32_MAX; }
 
+  virtual bool like(const Value &left, const Value &right) const { return false; }
+
   /**
    * @brief 计算 left + right，并将结果保存到 result 中
    */
