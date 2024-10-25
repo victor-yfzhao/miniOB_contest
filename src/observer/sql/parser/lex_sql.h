@@ -27,7 +27,6 @@ do {                                                         \
 while (0);
 
 #line 30 "lex_sql.h"
-#line 30 "lex_sql.h"
 
 #define  YY_INT_ALIGNED short int
 
@@ -37,34 +36,8 @@ while (0);
 #define YY_FLEX_MAJOR_VERSION 2
 #define YY_FLEX_MINOR_VERSION 6
 #define YY_FLEX_SUBMINOR_VERSION 4
-#define YY_FLEX_MINOR_VERSION 6
-#define YY_FLEX_SUBMINOR_VERSION 4
 #if YY_FLEX_SUBMINOR_VERSION > 0
 #define FLEX_BETA
-#endif
-
-#ifdef yyget_lval
-#define yyget_lval_ALREADY_DEFINED
-#else
-#define yyget_lval yyget_lval
-#endif
-
-#ifdef yyset_lval
-#define yyset_lval_ALREADY_DEFINED
-#else
-#define yyset_lval yyset_lval
-#endif
-
-#ifdef yyget_lloc
-#define yyget_lloc_ALREADY_DEFINED
-#else
-#define yyget_lloc yyget_lloc
-#endif
-
-#ifdef yyset_lloc
-#define yyset_lloc_ALREADY_DEFINED
-#else
-#define yyset_lloc yyset_lloc
 #endif
 
 #ifdef yyget_lval
@@ -167,17 +140,8 @@ typedef unsigned int flex_uint32_t;
 
 #endif /* ! C99 */
 
-#ifndef SIZE_MAX
-#define SIZE_MAX               (~(size_t)0)
-#endif
-
-#endif /* ! C99 */
-
 #endif /* ! FLEXINT_H */
 
-/* begin standard C++ headers. */
-
-/* TODO: this is always defined, so inline it */
 /* begin standard C++ headers. */
 
 /* TODO: this is always defined, so inline it */
@@ -185,11 +149,7 @@ typedef unsigned int flex_uint32_t;
 
 #if defined(__GNUC__) && __GNUC__ >= 3
 #define yynoreturn __attribute__((__noreturn__))
-
-#if defined(__GNUC__) && __GNUC__ >= 3
-#define yynoreturn __attribute__((__noreturn__))
 #else
-#define yynoreturn
 #define yynoreturn
 #endif
 
@@ -219,15 +179,7 @@ typedef void* yyscan_t;
  */
 #define YY_BUF_SIZE 32768
 #else
-#ifdef __ia64__
-/* On IA-64, the buffer size is 16k, not 8k.
- * Moreover, YY_BUF_SIZE is 2*YY_READ_BUF_SIZE in the general case.
- * Ditto for the __ia64__ case accordingly.
- */
-#define YY_BUF_SIZE 32768
-#else
 #define YY_BUF_SIZE 16384
-#endif /* __ia64__ */
 #endif /* __ia64__ */
 #endif
 
@@ -253,7 +205,6 @@ struct yy_buffer_state
 	/* Size of input buffer in bytes, not including room for EOB
 	 * characters.
 	 */
-	int yy_buf_size;
 	int yy_buf_size;
 
 	/* Number of characters read into yy_ch_buf, not including EOB
@@ -283,7 +234,6 @@ struct yy_buffer_state
     int yy_bs_lineno; /**< The line count. */
     int yy_bs_column; /**< The column count. */
 
-
 	/* Whether to try to fill the input buffer when we reach the
 	 * end of it.
 	 */
@@ -301,31 +251,17 @@ void yy_delete_buffer ( YY_BUFFER_STATE b , yyscan_t yyscanner );
 void yy_flush_buffer ( YY_BUFFER_STATE b , yyscan_t yyscanner );
 void yypush_buffer_state ( YY_BUFFER_STATE new_buffer , yyscan_t yyscanner );
 void yypop_buffer_state ( yyscan_t yyscanner );
-void yyrestart ( FILE *input_file , yyscan_t yyscanner );
-void yy_switch_to_buffer ( YY_BUFFER_STATE new_buffer , yyscan_t yyscanner );
-YY_BUFFER_STATE yy_create_buffer ( FILE *file, int size , yyscan_t yyscanner );
-void yy_delete_buffer ( YY_BUFFER_STATE b , yyscan_t yyscanner );
-void yy_flush_buffer ( YY_BUFFER_STATE b , yyscan_t yyscanner );
-void yypush_buffer_state ( YY_BUFFER_STATE new_buffer , yyscan_t yyscanner );
-void yypop_buffer_state ( yyscan_t yyscanner );
 
 YY_BUFFER_STATE yy_scan_buffer ( char *base, yy_size_t size , yyscan_t yyscanner );
 YY_BUFFER_STATE yy_scan_string ( const char *yy_str , yyscan_t yyscanner );
 YY_BUFFER_STATE yy_scan_bytes ( const char *bytes, int len , yyscan_t yyscanner );
-YY_BUFFER_STATE yy_scan_buffer ( char *base, yy_size_t size , yyscan_t yyscanner );
-YY_BUFFER_STATE yy_scan_string ( const char *yy_str , yyscan_t yyscanner );
-YY_BUFFER_STATE yy_scan_bytes ( const char *bytes, int len , yyscan_t yyscanner );
 
-void *yyalloc ( yy_size_t , yyscan_t yyscanner );
-void *yyrealloc ( void *, yy_size_t , yyscan_t yyscanner );
-void yyfree ( void * , yyscan_t yyscanner );
 void *yyalloc ( yy_size_t , yyscan_t yyscanner );
 void *yyrealloc ( void *, yy_size_t , yyscan_t yyscanner );
 void yyfree ( void * , yyscan_t yyscanner );
 
 /* Begin user sect3 */
 
-#define yywrap(yyscanner) (/*CONSTCOND*/1)
 #define yywrap(yyscanner) (/*CONSTCOND*/1)
 #define YY_SKIP_YYWRAP
 
@@ -352,45 +288,32 @@ void yyfree ( void * , yyscan_t yyscanner );
 int yylex_init (yyscan_t* scanner);
 
 int yylex_init_extra ( YY_EXTRA_TYPE user_defined, yyscan_t* scanner);
-int yylex_init_extra ( YY_EXTRA_TYPE user_defined, yyscan_t* scanner);
 
 /* Accessor methods to globals.
    These are made visible to non-reentrant scanners for convenience. */
 
 int yylex_destroy ( yyscan_t yyscanner );
-int yylex_destroy ( yyscan_t yyscanner );
 
-int yyget_debug ( yyscan_t yyscanner );
 int yyget_debug ( yyscan_t yyscanner );
 
 void yyset_debug ( int debug_flag , yyscan_t yyscanner );
-void yyset_debug ( int debug_flag , yyscan_t yyscanner );
 
-YY_EXTRA_TYPE yyget_extra ( yyscan_t yyscanner );
 YY_EXTRA_TYPE yyget_extra ( yyscan_t yyscanner );
 
 void yyset_extra ( YY_EXTRA_TYPE user_defined , yyscan_t yyscanner );
-void yyset_extra ( YY_EXTRA_TYPE user_defined , yyscan_t yyscanner );
 
-FILE *yyget_in ( yyscan_t yyscanner );
 FILE *yyget_in ( yyscan_t yyscanner );
 
 void yyset_in  ( FILE * _in_str , yyscan_t yyscanner );
-void yyset_in  ( FILE * _in_str , yyscan_t yyscanner );
 
-FILE *yyget_out ( yyscan_t yyscanner );
 FILE *yyget_out ( yyscan_t yyscanner );
 
 void yyset_out  ( FILE * _out_str , yyscan_t yyscanner );
-void yyset_out  ( FILE * _out_str , yyscan_t yyscanner );
 
-			int yyget_leng ( yyscan_t yyscanner );
 			int yyget_leng ( yyscan_t yyscanner );
 
 char *yyget_text ( yyscan_t yyscanner );
-char *yyget_text ( yyscan_t yyscanner );
 
-int yyget_lineno ( yyscan_t yyscanner );
 int yyget_lineno ( yyscan_t yyscanner );
 
 void yyset_lineno ( int _line_number , yyscan_t yyscanner );
@@ -398,22 +321,13 @@ void yyset_lineno ( int _line_number , yyscan_t yyscanner );
 int yyget_column  ( yyscan_t yyscanner );
 
 void yyset_column ( int _column_no , yyscan_t yyscanner );
-void yyset_lineno ( int _line_number , yyscan_t yyscanner );
 
-int yyget_column  ( yyscan_t yyscanner );
-
-void yyset_column ( int _column_no , yyscan_t yyscanner );
-
-YYSTYPE * yyget_lval ( yyscan_t yyscanner );
 YYSTYPE * yyget_lval ( yyscan_t yyscanner );
 
 void yyset_lval ( YYSTYPE * yylval_param , yyscan_t yyscanner );
-void yyset_lval ( YYSTYPE * yylval_param , yyscan_t yyscanner );
 
-       YYLTYPE *yyget_lloc ( yyscan_t yyscanner );
        YYLTYPE *yyget_lloc ( yyscan_t yyscanner );
     
-        void yyset_lloc ( YYLTYPE * yylloc_param , yyscan_t yyscanner );
         void yyset_lloc ( YYLTYPE * yylloc_param , yyscan_t yyscanner );
     
 /* Macros after this point can all be overridden by user definitions in
@@ -423,20 +337,16 @@ void yyset_lval ( YYSTYPE * yylval_param , yyscan_t yyscanner );
 #ifndef YY_SKIP_YYWRAP
 #ifdef __cplusplus
 extern "C" int yywrap ( yyscan_t yyscanner );
-extern "C" int yywrap ( yyscan_t yyscanner );
 #else
-extern int yywrap ( yyscan_t yyscanner );
 extern int yywrap ( yyscan_t yyscanner );
 #endif
 #endif
 
 #ifndef yytext_ptr
 static void yy_flex_strncpy ( char *, const char *, int , yyscan_t yyscanner);
-static void yy_flex_strncpy ( char *, const char *, int , yyscan_t yyscanner);
 #endif
 
 #ifdef YY_NEED_STRLEN
-static int yy_flex_strlen ( const char * , yyscan_t yyscanner);
 static int yy_flex_strlen ( const char * , yyscan_t yyscanner);
 #endif
 
@@ -450,12 +360,7 @@ static int yy_flex_strlen ( const char * , yyscan_t yyscanner);
 /* On IA-64, the buffer size is 16k, not 8k */
 #define YY_READ_BUF_SIZE 16384
 #else
-#ifdef __ia64__
-/* On IA-64, the buffer size is 16k, not 8k */
-#define YY_READ_BUF_SIZE 16384
-#else
 #define YY_READ_BUF_SIZE 8192
-#endif /* __ia64__ */
 #endif /* __ia64__ */
 #endif
 
@@ -471,7 +376,6 @@ static int yy_flex_strlen ( const char * , yyscan_t yyscanner);
 #define YY_DECL_IS_OURS 1
 
 extern int yylex \
-               (YYSTYPE * yylval_param, YYLTYPE * yylloc_param , yyscan_t yyscanner);
                (YYSTYPE * yylval_param, YYLTYPE * yylloc_param , yyscan_t yyscanner);
 
 #define YY_DECL int yylex \
@@ -637,10 +541,9 @@ extern int yylex \
 #undef yyTABLES_NAME
 #endif
 
-#line 146 "lex_sql.l"
+#line 147 "lex_sql.l"
 
 
-#line 548 "lex_sql.h"
 #line 548 "lex_sql.h"
 #undef yyIN_HEADER
 #endif /* yyHEADER_H */
