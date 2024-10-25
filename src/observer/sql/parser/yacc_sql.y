@@ -73,6 +73,7 @@ UnboundAggregateExpr *create_aggregate_expression(const char *aggregate_name,
         TABLES
         INDEX
         UNIQUE // ADD UNIQUE
+        AS // ADD AS
         CALC
         SELECT
         DESC
@@ -148,6 +149,7 @@ UnboundAggregateExpr *create_aggregate_expression(const char *aggregate_name,
 %type <value>               value
 %type <number>              number
 %type <string>              relation
+%type <string>              alias
 %type <comp>                comp_op
 %type <rel_attr>            rel_attr
 %type <attr_infos>          attr_def_list
@@ -468,6 +470,22 @@ update_stmt:      /*  update 语句的语法解析树*/
       free($4);
     }
     ;
+
+alias:
+    /* empty */
+    {
+      $$ = nullptr;
+    }
+    | ID
+    {
+      $$ = $1;
+    }
+    | AS ID
+    {
+      $$ = $2;
+    }
+    ;
+
 select_stmt:        /*  select 语句的语法解析树*/
     SELECT expression_list FROM rel_list where group_by
     {
@@ -503,19 +521,27 @@ calc_stmt:
     ;
 
 expression_list:
-    expression
+    expression alias
     {
       $$ = new std::vector<std::unique_ptr<Expression>>;
+      if ($2 != nullptr) {
+        $1->set_alias($2);
+      }
       $$->emplace_back($1);
+      free($2);
     }
-    | expression COMMA expression_list
+    | expression alias COMMA expression_list
     {
-      if ($3 != nullptr) {
-        $$ = $3;
+      if ($4 != nullptr) {
+        $$ = $4;
       } else {
         $$ = new std::vector<std::unique_ptr<Expression>>;
       }
+      if ($2 != nullptr) {
+        $1->set_alias($2);
+      }
       $$->emplace($$->begin(), $1);
+      free($2);
     }
     ;
 expression:

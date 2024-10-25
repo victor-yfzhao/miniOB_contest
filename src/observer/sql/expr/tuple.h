@@ -307,6 +307,53 @@ private:
   Tuple                                   *tuple_ = nullptr;
 };
 
+// /**
+//  * @brief 一行数据的元组，包含了表达式
+//  * @ingroup Tuple
+//  * @details 一般在select语句中使用。
+//  * 一行数据中的每个字段都是一个表达式，比如select a+b from t1;
+//  */
+// class ExpressionTuple : public Tuple
+// {
+// public:
+//   ExpressionTuple(std::vector<std::unique_ptr<Expression>> &expressions)
+//     : expressions_(expressions)
+//   {
+//   }
+  
+//   virtual ~ExpressionTuple()
+//   {
+//   }
+
+//   int cell_num() const override
+//   {
+//     return expressions_.size();
+//   }
+
+//   RC cell_at(int index, Value &cell) const override
+//   {
+//     if (index < 0 || index >= static_cast<int>(expressions_.size())) {
+//       return RC::INTERNAL;
+//     }
+
+//     const Expression *expr = expressions_[index].get();
+//     return expr->try_get_value(cell);
+//   }
+
+//   RC find_cell(const TupleCellSpec &spec, Value &cell) const override
+//   {
+//     for (const std::unique_ptr<Expression> &expr : expressions_) {
+//       if (std::string(spec.alias()) == expr->name()) {
+//         return expr->try_get_value(cell);
+//       }
+//     }
+//     return RC::NOTFOUND;
+//   }
+
+// private:
+//   const std::vector<std::unique_ptr<Expression>> &expressions_;
+// };
+
 /**
  * @brief 一些常量值组成的Tuple
  * @ingroup Tuple
